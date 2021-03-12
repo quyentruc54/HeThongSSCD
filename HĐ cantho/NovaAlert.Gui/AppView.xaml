@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="NovaAlert.Gui.AppView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bll="clr-namespace:NovaAlert.Bll;assembly=NovaAlert.Bll"
+             xmlns:Gui="clr-namespace:NovaAlert.Gui"
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             d:DataContext="{d:DesignInstance Type={x:Type Bll:ClientAppViewModel}, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1260">
+    <UserControl.Resources>        
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter" TrueValue="Visible" FalseValue="Collapsed" />
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter2" TrueValue="Collapsed" FalseValue="Visible" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*"/>            
+            <ColumnDefinition Width="*" />            
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <Gui:AppInfoView Grid.ColumnSpan="4" Style="{DynamicResource HeaderPanel}" />
+
+        <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Menu}" />        
+        
+        <ContentControl Grid.Row="1" Grid.Column="3" Content="{Binding Control}" />
+        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="{Binding Units}" Style="{DynamicResource UnitPanel}" />
+        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="{Binding Alarm}" />
+        
+        <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Content="{Binding Channels}" />
+        
+        <!--<Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Background="LightGray" Opacity="0.7" Visibility="{Binding IsSwitchConnected, Converter={StaticResource bvConverter2}}">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="Red" FontSize="40" FontWeight="Bold" Text="Mất kết nối với chuyển mạch" />
+        </Border>-->
+
+        <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Content="{Binding Menu.Config}" 
+                        Visibility="{Binding Menu.IsInConfigMode, Converter={StaticResource bvConverter}}" />
+        
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <ContentControl Grid.Column="0" Content="{Binding Help}" />
+            <Gui:InfoView Grid.Column="1" Visibility="{Binding IsInfoVisible, Converter={StaticResource bvConverter}}" />
+            <!--<ContentControl Grid.Column="1" Content="{Binding Option}" 
+                            Visibility="{Binding AlertOptionVisible, Converter={StaticResource bvConverter}}" />-->
+            <ContentControl Grid.Column="1" Content="{Binding Option}" Visibility="{Binding AlertOptionVisible, Converter={StaticResource bvConverter}}" />
+        </Grid>
+
+        <ContentControl Grid.ColumnSpan="4" Grid.RowSpan="4" Content="{Binding Menu.Login}" 
+                        Visibility="{Binding Menu.Login.Visible, Converter={StaticResource bvConverter}}"/>
+        
+        <Border Grid.ColumnSpan="4" Grid.RowSpan="4" Background="LightGray" Opacity="0.7">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsDeviceReady}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="Red" FontSize="40" FontWeight="Bold"
+                           Text="{Binding DeviceStatusText}" />
+                <Viewbox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Width="200" Height="200">
+                    <Gui:CircularProgressBar />
+                </Viewbox>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

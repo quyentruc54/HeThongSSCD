@@ -1,0 +1,593 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:diag="clr-namespace:System.Diagnostics;assembly=System"
+                    xmlns:clr="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Custom="http://schemas.microsoft.com/surface/2008"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+                    xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+                    x:Name="MainResource">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="VolumnControlResource.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <clr:String x:Key="Company">VIỆN CÔNG NGHỆ THÔNG TIN</clr:String>
+    <clr:String x:Key="Address">02-Hồng Hà Phường 2, Q.Tân Bình TP.HCM</clr:String>
+    <clr:String x:Key="PhoneNumber">Điện Thoại: 069.665 787</clr:String>
+    <clr:String x:Key="ProductName">THIẾT BỊ HỔ TRỢ ĐIỀU HÀNH CHỈ HUY TÁC CHIẾN TCT-14</clr:String>
+    
+    <SolidColorBrush x:Key="grayBrush" Color="Gray" />
+    <SolidColorBrush x:Key="redBrush" Color="Red" />
+    <SolidColorBrush x:Key="greenBrush" Color="Green" />
+    <SolidColorBrush x:Key="darkGreenBrush" Color="DarkGreen" />
+    <SolidColorBrush x:Key="sidePanelBackground" Color="#FFD0D1D7" />
+
+    <Thickness x:Key="UnitPhoneMargin" Left="20" Right="20" Top="10" Bottom="10" />
+    
+    <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter" TrueValue="Visible" FalseValue="Collapsed" />
+
+
+    <Style x:Key="InfoText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="1" />
+    </Style>
+
+    <Style x:Key="StatusText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Blue" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+    <Style x:Key="HeaderPanel" TargetType="ContentControl">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style x:Key="SidePanel" TargetType="ContentControl">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style x:Key="UnitPanel" TargetType="ContentControl">
+        <Setter Property="Margin" Value="0" />        
+    </Style>
+
+    <Style x:Key="ChannelPanel" TargetType="ContentControl">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <ControlTemplate x:Key="ConfigTextBlockTemplate" TargetType="Button">
+        <Grid>            
+            <Border x:Name="bg" Background="{TemplateBinding Background}" Margin="2,2,2,2" CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>
+            <TextBlock Margin="6" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" />
+        </Grid>        
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ConfigCheckBoxTemplate" TargetType="CheckBox">
+        <Grid>
+            <Border x:Name="bg" Background="{TemplateBinding Background}" Margin="2,2,2,2" CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>
+            <TextBlock Margin="6" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ConfigButtonTemplate" TargetType="Button">
+        <Grid>
+            <!--<Border Background="Silver" CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>-->
+
+            <!--<Border BorderThickness="1,1,0,0" BorderBrush="LightGray" CornerRadius="3"/>
+                <Border BorderThickness="0,0,2,2" BorderBrush="Black" CornerRadius="3" Opacity="0.5" />-->
+            <Border x:Name="bg" Background="{TemplateBinding Background}" Margin="2,2,2,2" CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>
+            <TextBlock Margin="6" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                        
+                    </Setter.Value>
+                    
+                </Setter>
+                <Setter Property="Foreground" Value="Yellow"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="bg" Property="Background" Value="Gray" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ConfigStatusButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Aqua"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Status}" Value="0">
+                <Setter Property="Foreground" Value="Black"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="1">
+                <Setter Property="Foreground" Value="Red" />
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=Selected}" Value="true">
+                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Foreground" Value="Yellow"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Seleted}" Value="false">
+                <Setter Property="Background" Value="Aqua"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <ControlTemplate x:Key="CircleButtonTemplate" TargetType="Button">
+        <Grid>           
+            <Ellipse x:Name="border" Fill="Silver">
+                <Ellipse.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3" Direction="-90" />
+                </Ellipse.Effect>
+            </Ellipse>
+            <Ellipse Margin="4" Stroke="{TemplateBinding Background}"/>
+            <Ellipse x:Name="bg" Margin="6" Fill="{TemplateBinding Background}" >
+                <Ellipse.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3" Direction="-90" />
+                </Ellipse.Effect>
+            </Ellipse>            
+                
+            <TextBlock x:Name="tb" Margin="6" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"
+                       Foreground="{TemplateBinding Foreground}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>                        
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                    </Setter.Value>
+                </Setter>                
+                <Setter TargetName="bg" Property="Fill" Value="Gray" />
+                <Setter TargetName="tb" Property="Foreground" Value="LightGray" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RectangleButtonTemplate" TargetType="Button">
+        <Grid>
+            <Border Background="Silver" CornerRadius="3">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>
+            <Border x:Name="obg" Margin="5" BorderThickness="1" BorderBrush="{TemplateBinding Background}"  CornerRadius="2"/>
+            <Border x:Name="bg" Background="{TemplateBinding Background}" Margin="6" CornerRadius="2">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" BlurRadius="3" Direction="-45" />
+                </Border.Effect>
+            </Border>
+            <TextBlock Margin="6" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       Foreground="Black" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <!--<Setter TargetName="bg" Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="bg" Property="Background" Value="Gray" />-->
+                <Setter TargetName="bg" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="obg" Property="Visibility" Value="Hidden"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="PhoneStatusButtonStyle" TargetType="Button">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Status}" Value="0">
+                <Setter Property="IsEnabled" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="1">
+                <Setter Property="Background" Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="2">
+                <Setter Property="Background" Value="Orange" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="3">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="4">                
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="ringAni">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" 
+                                                                           BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource grayBrush}" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{StaticResource redBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="ringAni" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=Status}" Value="5">
+                <Setter Property="Background" Value="Yellow" />
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=Status}" Value="6">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="7">
+                <Setter Property="Background" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="8">
+                <Setter Property="Background" Value="Green" />
+            </DataTrigger>
+            
+            <!--Alert-->
+            <DataTrigger Binding="{Binding Path=Status}" Value="9">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="waitForKeycodeAni">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" 
+                                                                           BeginTime="0:0:0" Duration="0:0:2" RepeatBehavior="Forever">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{StaticResource grayBrush}" />
+                                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{StaticResource greenBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="waitForKeycodeAni" />
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="10">
+                <Setter Property="Background" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="11">
+                <Setter Property="Background" Value="Green" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="POStatusButtonStyle" TargetType="Button">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Status}" Value="1">
+                <Setter Property="Background" Value="LightGray" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Status}" Value="0">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>            
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="ControlButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="65" />
+        <Setter Property="Height" Value="65" />
+        <!--<Setter Property="Margin" Value="15,10" />-->
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="ConferenceButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Controller.HasConference}" Value="true">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Controller.HasConference}" Value="false">
+                <Setter Property="Background" Value="Green" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="AlertButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Controller.HasConference}" Value="true">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>            
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="IssueButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Controller.Issued}" Value="true">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RecordButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Controller.IsRecording}" Value="true">
+                <Setter Property="Background" Value="Red" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HorizonControlButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">        
+        <Setter Property="Margin" Value="5,0" />
+    </Style>
+    
+    <DataTemplate x:Key="UnitDataTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" x:Name="TextTask" Style="{StaticResource StatusText}" Text="{Binding TextTask}" Margin="0,2" />
+
+            <!--<TextBlock Grid.Row="0" x:Name="TextTaskCCPK" Style="{StaticResource StatusText}" Text="{Binding Task.TextTaskCCPK}" Margin="0,2" />-->
+
+            <TextBlock Grid.Row="1" x:Name="TextResult" Style="{StaticResource StatusText}" Text="{Binding TextResult}" Margin="0,2"/>
+
+            <Button Content="{Binding Name}" Grid.Row="2" Template="{StaticResource RectangleButtonTemplate}"
+                    Width="70" Height="65"
+                    Style="{StaticResource PhoneStatusButtonStyle}"
+                    Command="{Binding OnClickCommand}">
+            </Button>            
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.ShowTask}" Value="false">
+                <Setter TargetName="TextTask" Property="Visibility" Value="Hidden" />                
+            </DataTrigger>
+
+            <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.ShowTaskCCPK}" Value="false">
+                <Setter TargetName="TextTaskCCPK" Property="Visibility" Value="Hidden" />
+            </DataTrigger>-->
+
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.ShowResult}" Value="false">                
+                <Setter TargetName="TextResult" Property="Visibility" Value="Hidden" />
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding IsTaskChanged}" Value="true">
+                <Setter TargetName="TextTask" Property="Foreground" Value="Red" />
+                <!--<Setter TargetName="TextTaskCCPK" Property="Foreground" Value="Red" />-->
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ChannelDataTemplate">        
+        <Grid Margin="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="txNumber" Text="{Binding FullNumber}" Style="{StaticResource InfoText}" Margin="0,2" FontSize="12" Foreground="Yellow" Grid.ColumnSpan="2"/>
+
+            <Button Grid.Row="1" Template="{StaticResource RectangleButtonTemplate}"
+                    Content="{Binding Name}" Style="{StaticResource PhoneStatusButtonStyle}"
+                    Width="70" Height="65" Command="{Binding OnClickCommand}" Grid.ColumnSpan="2"/>            
+
+            <TextBlock Text="{Binding CallerId}" Grid.Row="2" Style="{StaticResource InfoText}" Margin="0,2" />
+            <TextBlock Text="{Binding Tone}" Grid.Row="2" Style="{StaticResource InfoText}" Margin="0,2" Grid.Column="1"/>
+        </Grid>
+        <DataTemplate.Triggers>            
+            <DataTrigger Binding="{Binding IsRestricted}" Value="True">
+                <Setter TargetName="txNumber" Property="FontStyle" Value="Italic" />
+                <Setter TargetName="txNumber" Property="Foreground" Value="LightGray" />
+            </DataTrigger>            
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PODataTemplate">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Style="{StaticResource InfoText}" Margin="0,2" />
+            
+            <Button Grid.Row="1" Template="{StaticResource RectangleButtonTemplate}"
+                    Content="{Binding Name}" Style="{StaticResource POStatusButtonStyle}"
+                    Width="70" Height="65" />
+
+            <!--<TextBlock Grid.Row="2" Style="{StaticResource InfoText}" Margin="0,2" Text="{Binding Tone}" />-->
+            <TextBlock Grid.Row="2" Style="{StaticResource InfoText}" Margin="0,2" Text="" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DayTypeConfigDataTemplate">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="200"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <!--<Button x:Name="dayButton" Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="{Binding Name}" DataContext="{Binding Day}"  Command="{Binding ClickCommand}"/>
+            <Popup x:Name="popUp1" IsOpen="{Binding Day.Selected}" StaysOpen="False" Height="auto" Width="400" Placement="Right" AllowsTransparency="True"
+                       PlacementTarget="{Binding ElementName=dayButton}"  PopupAnimation="Slide">
+                <Border CornerRadius="3" BorderThickness="3" HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                <ContentControl Content="{Binding AlarmVM}"  />
+                </Border>
+            </Popup>-->
+            <Button x:Name="dayButton" Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="{Binding Name}" DataContext="{Binding Day}" />
+            <Button x:Name="typeButton" Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Grid.Column="1" Content="{Binding Name}" DataContext="{Binding Type}"  Command="{Binding ClickCommand}"/>
+            <Popup x:Name="popUp" IsOpen="{Binding Type.Selected}" StaysOpen="False" Height="auto" Width="auto" Placement="Right" AllowsTransparency="True"
+                       PlacementTarget="{Binding ElementName=typeButton}"  PopupAnimation="Slide">
+                <Border CornerRadius="3" BorderThickness="3" HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}">
+                    <ContentControl Content="{Binding Type}"/>
+                </Border>
+            </Popup>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DayTypeDataTemplate">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Button Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="{Binding Name}"  Command="{Binding ClickCommand}"/>
+        </Grid>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="AlarmDataTemplate" >
+        <Grid x:Name="grid">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <!--<Button Template="{StaticResource ConfigTextBlockTemplate}" Background="Aqua" Content="{Binding Name, Mode=OneWay}"/>-->
+            <CheckBox Content="{Binding Name, Mode=OneWay}" FontSize="14" Template="{StaticResource ConfigCheckBoxTemplate}" Background="Aqua"
+                      IsChecked="{Binding IsEnabled}"/>
+            <dxe:DateEdit x:Name="editor" Margin="1" Grid.ColumnSpan="1" Grid.Column="1" HorizontalContentAlignment="Center" 
+                          Background="Aqua" IsReadOnly="{Binding IsReadOnly}" AllowDefaultButton="{Binding IsEnabled}"
+                          Mask="HH:mm" MaskType="DateTimeAdvancingCaret" EditValue="{Binding Time}" DisplayFormatString="HH:mm">
+                <dxe:DateEdit.StyleSettings>
+                    <dxe:DateEditPickerStyleSettings />
+                </dxe:DateEdit.StyleSettings>
+                <dxe:TextEdit.BorderTemplate>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Border BorderThickness="1"  Background="Aqua" 
+                            CornerRadius="3">
+                            <ContentPresenter />
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </dxe:TextEdit.BorderTemplate>
+            </dxe:DateEdit>
+            <dxe:SpinEdit Grid.Column="2" Margin="1" Text="{Binding TimesOfPlaying}"  IsReadOnly="{Binding IsReadOnly}"  AllowDefaultButton="{Binding IsEnabled}"
+                          HorizontalContentAlignment="Center" Background="Aqua" MinValue="0" MaxValue="10" IsFloatValue="False" 
+                          Visibility="{Binding ShowTimeOfPlaying, Converter={StaticResource bvConverter}}">
+                <dxe:TextEdit.BorderTemplate>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Border BorderThickness="1"  Background="Aqua" 
+                            CornerRadius="3">
+                            <ContentPresenter />
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </dxe:TextEdit.BorderTemplate>
+            </dxe:SpinEdit>            
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                <Setter TargetName="grid" Property="Opacity" Value="0.5" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RadioTimeDataTemplate" >
+        <Grid x:Name="grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <!--<Button Template="{StaticResource ConfigTextBlockTemplate}" Background="Aqua" Content="{Binding Name, Mode=OneWay}"/>-->            
+            <CheckBox Content="{Binding Name, Mode=OneWay}" FontSize="14" Template="{StaticResource ConfigCheckBoxTemplate}" Background="Aqua"
+                      IsChecked="{Binding IsEnabled}"/>
+            <dxe:DateEdit Margin="1" Grid.ColumnSpan="1" Grid.Column="1" HorizontalContentAlignment="Center" 
+                          Background="Aqua" IsReadOnly="{Binding IsReadOnly}" AllowDefaultButton="{Binding IsEnabled}"
+                    Mask="HH:mm" MaskType="DateTimeAdvancingCaret" EditValue="{Binding StartTime}" DisplayFormatString="HH:mm">
+                <dxe:DateEdit.StyleSettings>
+                    <dxe:DateEditPickerStyleSettings />
+                </dxe:DateEdit.StyleSettings>
+                <dxe:TextEdit.BorderTemplate>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Border BorderThickness="1"  Background="Aqua" 
+                            CornerRadius="3">
+                            <ContentPresenter />
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </dxe:TextEdit.BorderTemplate>
+            </dxe:DateEdit>
+            <dxe:DateEdit Margin="1" Grid.ColumnSpan="1" Grid.Column="2" HorizontalContentAlignment="Center" 
+                          Background="Aqua" IsReadOnly="{Binding IsReadOnly}" AllowDefaultButton="{Binding IsEnabled}"
+                    Mask="HH:mm" MaskType="DateTimeAdvancingCaret" EditValue="{Binding EndTime}" DisplayFormatString="HH:mm">
+                <dxe:DateEdit.StyleSettings>
+                    <dxe:DateEditPickerStyleSettings />
+                </dxe:DateEdit.StyleSettings>
+                <dxe:TextEdit.BorderTemplate>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Border BorderThickness="1"  Background="Aqua" 
+                            CornerRadius="3">
+                            <ContentPresenter />
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="3" Direction="-45" />
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </dxe:TextEdit.BorderTemplate>
+            </dxe:DateEdit>                                 
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                <Setter TargetName="grid" Property="Opacity" Value="0.5" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

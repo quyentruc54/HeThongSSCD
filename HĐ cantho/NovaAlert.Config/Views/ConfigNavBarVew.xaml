@@ -1,0 +1,53 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar" x:Class="NovaAlert.Config.Views.ConfigNavBarVew" 
+             mc:Ignorable="d" FontSize="17" FontWeight="Bold"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Control.Resources>       
+        
+        <Style x:Key="commonGroupStyle">
+            <Setter Property="dxn:NavBarViewBase.LayoutSettings" Value="{dxn:NavBarLayoutSettings TextHorizontalAlignment=Right}" />
+            <Setter Property="Control.Foreground" Value="Blue" />
+            <Setter Property="Control.FontWeight" Value="Bold" />
+            <Setter Property="Control.Height" Value="50" />
+        </Style>
+
+        <!-- A common layout style for all items -->
+        <Style x:Key="commonItemStyle">
+            <Setter Property="dxn:NavBarViewBase.LayoutSettings" Value="{dxn:NavBarLayoutSettings TextHorizontalAlignment=Right}" />
+            <Setter Property="Control.Foreground" Value="Green" />
+            <Setter Property="Control.Height" Value="40" />
+            <Setter Property="Control.Margin" Value="10,3,3,3" />
+        </Style>
+
+
+    </Control.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <dxn:NavBarControl Name="navBar" ItemsSource="{Binding NavBarGroups}" SelectedGroup="{Binding SelectedGroup}">
+            <dxn:NavBarControl.Resources>
+                <Style TargetType="dxn:NavBarGroup">
+                    <Setter Property="Header" Value="{Binding GroupName}"/>
+                    <Setter Property="ItemsSource" Value="{Binding Items}"/>
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+                </Style>
+                <Style TargetType="dxn:NavBarItem">
+                    <Setter Property="Content" Value="{Binding Path=ItemName}"/>
+                    <Setter Property="Command" Value="{Binding Command}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    <Setter Property="IsVisible" Value="{Binding IsVisible}" />
+                </Style>
+            </dxn:NavBarControl.Resources>
+
+            <dxn:NavBarControl.View>
+                <dxn:SideBarView GroupVisualStyle="{StaticResource commonGroupStyle}" ItemVisualStyle="{StaticResource commonItemStyle}" />
+            </dxn:NavBarControl.View>
+
+        </dxn:NavBarControl>
+    </Grid>
+</UserControl>

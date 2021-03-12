@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.AlarmListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Config="clr-namespace:NovaAlert.Config.ViewModels"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             mc:Ignorable="d"              
+             FontSize="16" FontWeight="Bold"
+             d:DesignHeight="550" d:DesignWidth="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Template="{StaticResource ConfigTextBlockTemplate}" Background="Yellow" Content="Mốc thời gian"/>
+        <Button Template="{StaticResource ConfigTextBlockTemplate}" Background="Yellow" Content="Thời gian" Grid.Column="1"/>
+        <Button Template="{StaticResource ConfigTextBlockTemplate}" Background="Yellow" Content="Số lần" Grid.Column="2">
+            <Button.Style>                
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ShowTimeOfPlaying}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+        <ItemsControl Grid.Row="1" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+             ItemsSource="{Binding Items}"
+             ItemTemplate="{DynamicResource AlarmDataTemplate}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" DataContext="{Binding}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+</UserControl>

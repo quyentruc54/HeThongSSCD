@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1ca8bea2d524cef9aa23461d3f84a65" Name="Diagram1">
+        <EntityTypeShape EntityType="NovaAlert.Dal.AlarmDb" Width="1.5" PointX="2.375" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.ChannelDb" Width="1.625" PointX="4.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.DayTypeConfigDb" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.EnumDb" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.GroupDb" Width="1.5" PointX="9.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.GroupUnitDb" Width="1.5" PointX="7.125" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.PanelDb" Width="1.5" PointX="0.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.PhoneNumberBase" Width="1.75" PointX="9.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.User" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.PhoneNumber" Width="1.75" PointX="6.875" PointY="2.125" />
+        <InheritanceConnector EntityType="NovaAlert.Dal.PhoneNumber" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.HostPhoneNumber" Width="1.875" PointX="6.75" PointY="0.5" />
+        <InheritanceConnector EntityType="NovaAlert.Dal.HostPhoneNumber" />
+        <AssociationConnector Association="NovaAlert.Dal.ChannelHostPhoneNumber" />
+        <AssociationConnector Association="NovaAlert.Dal.GroupGroupUnit" />
+        <AssociationConnector Association="NovaAlert.Dal.GroupUnitPhoneNumber" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.PODb" Width="1.5" PointX="2.375" PointY="2.25" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.GroupUnitTask" Width="1.5" PointX="0.5" PointY="6.125" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.CallLogDb" Width="1.5" PointX="2.5" PointY="6.375" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.CallLogDetailDb" Width="1.5" PointX="4.625" PointY="6.375" />
+        <AssociationConnector Association="NovaAlert.Dal.CallLogDbCallLogDetailDb" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.ViewResult" Width="1.5" PointX="0.5" PointY="9.125" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.AlarmLog" Width="1.5" PointX="2.5" PointY="9.375" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.DbLog" Width="1.5" PointX="4.75" PointY="9.625" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.DisplayDataDb" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.RadioTimeDb" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.TslStatusDb" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="NovaAlert.Dal.SubResult" Width="1.5" PointX="11.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="NovaAlert.Gui.MultiDestControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="402" d:DesignWidth="107">  
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ConferenceButtonStyle}" Content="GỌI NHÓM" Command="{Binding CallGroupCommand}"/>
+        <Button Grid.Row="1" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="GIỮ" Command="{Binding HoldCommand}"/>
+        <Button Grid.Row="2" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="XÓA" Command="{Binding ClearCommand}"/>
+        <Button Grid.Row="3" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource RecordButtonStyle}" Content="GHI ÂM" Command="{Binding RecordCommand}"/>
+        <Button Grid.Row="4" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="CHỌN NHÓM" Command="{Binding GroupSelectCommand}"/>
+    </Grid>
+</UserControl>

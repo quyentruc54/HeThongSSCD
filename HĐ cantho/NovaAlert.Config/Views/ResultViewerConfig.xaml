@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.ResultViewerConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d" Height="280" Width="505">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--<TextBlock Grid.Row="0" Margin="3" VerticalAlignment="Center" Text="Tiêu đề" />
+        <dxe:TextEdit Margin="3" Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />-->
+        <TextBlock Grid.Row="1" Margin="3" Text="Thời gian cuộn màn hình (ms)" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <!--<TextBlock Margin="3" VerticalAlignment="Center" Text="Thời gian (ms)" />-->
+            <dxe:TextEdit Margin="3" EditValue="{Binding TimerInterval}" Width="50" MaxLength="4"/>
+
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Độ lệch" />
+            <dxe:TextEdit Margin="3" EditValue="{Binding ScrollDistance}" Width="50" MaxLength="4" DisplayFormatString="N2"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Margin="3" Text="Thời gian cập nhật dữ liệu (s)" VerticalAlignment="Center" />
+        <dxe:TextEdit Grid.Row="2" Grid.Column="1" Margin="3" EditValue="{Binding DataRefeshInterval}" Width="50" MaxLength="4" HorizontalAlignment="Left"/>
+
+        <CheckBox Margin="3" Grid.Row="3" Grid.Column="1" Content="Hiển thị chuyển trạng thái" IsChecked="{Binding ShowCTT}" />
+        <CheckBox Margin="3" Grid.Row="4" Grid.Column="1" Content="Hiển thị chuyển cấp phòng không" IsChecked="{Binding ShowPK}" />
+        <CheckBox Margin="3" Grid.Row="5" Grid.Column="1" Content="Hiển thị đơn vị cấp dưới" IsChecked="{Binding ShowSubResult}" />
+        <CheckBox Margin="3" Grid.Row="6" Grid.Column="1" Content="Hiển thị các đường dọc" IsChecked="{Binding ShowVerticalLines}" />
+        <CheckBox Margin="3" Grid.Row="7" Grid.Column="1" Content="Tự động cuộn màn hình" IsChecked="{Binding AutoScroll}" />
+    </Grid>
+</UserControl>

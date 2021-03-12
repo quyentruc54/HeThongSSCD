@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NovaAlert.Dal.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alarm">
+          <Key>
+            <PropertyRef Name="AlarmId" />
+          </Key>
+          <Property Name="AlarmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DayType" Type="tinyint" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="TimesOfPlaying" Type="tinyint" Nullable="false" />
+          <Property Name="AlarmType" Type="tinyint" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AlarmLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlarmType" Type="tinyint" Nullable="false" />
+          <Property Name="AlarmTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CallLog">
+          <Key>
+            <PropertyRef Name="CallLogId" />
+          </Key>
+          <Property Name="CallLogId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="POId" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="CallType" Type="tinyint" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="CallLogDetail">
+          <Key>
+            <PropertyRef Name="CallLogDetailId" />
+          </Key>
+          <Property Name="CallLogDetailId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CallLogId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChannelId" Type="int" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Record" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumberId" Type="int" Nullable="false" />
+          <Property Name="AutoRecording" Type="bit" Nullable="false" />
+          <Property Name="AlertEnabled" Type="bit" Nullable="false" />
+          <Property Name="MultiDestEnabled" Type="bit" Nullable="false" />          
+          <Property Name="CCPKEnabled" Type="bit" Nullable="false" />
+          <Property Name="HotUnitId" Type="int" />
+        </EntityType>
+        <EntityType Name="DayTypeConfig">
+          <Key>
+            <PropertyRef Name="DayOfWeek" />
+          </Key>
+          <Property Name="DayOfWeek" Type="tinyint" Nullable="false" />
+          <Property Name="DayType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DbLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="PanelId" Type="tinyint" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Info" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Enum">
+          <Key>
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="tinyint" Nullable="false" />
+          <Property Name="Desc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ListOrder" Type="tinyint" />
+          <Property Name="Desc_VN" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GroupUnit">
+          <Key>
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="int" Nullable="false" />
+          <Property Name="ListOrder" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUnitTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Task" Type="tinyint" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+          <Property Name="Result" Type="tinyint" Nullable="false" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="TaskType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Panel">
+          <Key>
+            <PropertyRef Name="PanelId" />
+          </Key>
+          <Property Name="PanelId" Type="tinyint" Nullable="false" />
+          <Property Name="POId" Type="tinyint" Nullable="false" />
+          <Property Name="CurrentMode" Type="tinyint" />
+          <Property Name="CurrentGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="PhoneNumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="5" />
+          <Property Name="Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TSLAreaCode" Type="varchar" MaxLength="5" />
+          <Property Name="TSLNumber" Type="varchar" MaxLength="20" />
+          <Property Name="IsRestricted" Type="bit" Nullable="false" />
+          <Property Name="Address" Type="tinyint" />
+          <Property Name="NameAbbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PO">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Address" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisplayData">
+          <Key>
+            <PropertyRef Name="DisplayId" />            
+          </Key>
+          <Property Name="DisplayId" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber_1" Type="int" />
+          <Property Name="PhoneNumber_2" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NovaAlert2.dbo.ViewResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="int" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Task" Type="tinyint" />
+          <Property Name="Level" Type="tinyint" />
+          <Property Name="Result" Type="tinyint" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="TaskType" Type="tinyint" />
+        </EntityType>
+      <EntityType Name="RadioTime">
+        <Key>
+          <PropertyRef Name="DayType" />
+          <PropertyRef Name="ListOrder" />
+        </Key>
+        <Property Name="DayType" Type="tinyint" Nullable="false" />
+        <Property Name="ListOrder" Type="tinyint" Nullable="false" />
+        <Property Name="StartTime" Type="datetime" />
+        <Property Name="EndTime" Type="datetime" />
+        <Property Name="IsEnabled" Type="bit" Nullable="false" />
+      </EntityType>
+
+      <EntityType Name="TslStatus">
+        <Key>
+          <PropertyRef Name="Id" />          
+        </Key>
+        <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        <Property Name="Type" Type="tinyint" Nullable="false" />
+        <Property Name="PhoneNumberId" Type="int" Nullable="false"/>
+        <Property Name="Status" Type="tinyint" Nullable="false" />
+        <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        <Property Name="DeletedDate" Type="datetime" />
+      </EntityType>
+      
+      <EntityType Name="SubResult">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        <Property Name="DisplayId" Type="int" Nullable="false" />
+        <Property Name="ParentId" Type="int" Nullable="false" />
+        <Property Name="PhoneNumberId" Type="int" Nullable="false" />
+        <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        <Property Name="UnitName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        <Property Name="Task" Type="tinyint" Nullable="false" />
+        <Property Name="Level" Type="tinyint" Nullable="false" />
+        <Property Name="Result" Type="tinyint" Nullable="false" />
+        <Property Name="TimeReceive" Type="datetime" />
+        <Property Name="IntervalReceive" Type="bigint" />
+        <Property Name="TimeChange" Type="datetime" />
+        <Property Name="IntervalChange" Type="bigint" />
+        <Property Name="TaskType" Type="tinyint" Nullable="false" />
+      </EntityType>
+      
+        <EntityContainer Name="NovaAlertDalStoreContainer">
+          <EntitySet Name="RadioTime" EntityType="Self.RadioTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alarm" EntityType="Self.Alarm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlarmLog" EntityType="Self.AlarmLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CallLog" EntityType="Self.CallLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CallLogDetail" EntityType="Self.CallLogDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DayTypeConfig" EntityType="Self.DayTypeConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DbLog" EntityType="Self.DbLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enum" EntityType="Self.Enum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUnit" EntityType="Self.GroupUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUnitTask" EntityType="Self.GroupUnitTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Panel" EntityType="Self.Panel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneNumber" EntityType="Self.PhoneNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PO" EntityType="Self.PO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisplayData" EntityType="Self.DisplayData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewResult" EntityType="Self.ViewResult" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TslStatus" EntityType="Self.TslStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubResult" EntityType="Self.SubResult" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NovaAlert.Dal" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlarmDb">
+          <Key>
+            <PropertyRef Name="AlarmId" />
+          </Key>
+          <Property Name="AlarmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayType" Type="Byte" Nullable="false" />
+          <Property Name="AlarmType" Type="Byte" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimesOfPlaying" Type="Byte" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChannelDb">
+          <Key>
+            <PropertyRef Name="ChannelId" />
+          </Key>
+          <Property Name="ChannelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" />
+          <Property Name="AutoRecording" Type="Boolean" Nullable="false" />
+          <Property Name="AlertEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CCPKEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="MultiDestEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="HotUnitId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="HostPhoneNumber" Relationship="NovaAlert.Dal.ChannelHostPhoneNumber" FromRole="Channel" ToRole="HostPhoneNumber" />
+        </EntityType>
+        <EntityType Name="DayTypeConfigDb">
+          <Key>
+            <PropertyRef Name="DayOfWeek" />
+          </Key>
+          <Property Name="DayOfWeek" Type="Byte" Nullable="false" />
+          <Property Name="DayType" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnumDb">
+          <Key>
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="Byte" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ListOrder" Type="Byte" />
+          <Property Name="Desc_VN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupDb">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" />
+          <NavigationProperty Name="GroupUnits" Relationship="NovaAlert.Dal.GroupGroupUnit" FromRole="Group" ToRole="GroupUnit" />
+        </EntityType>
+        <EntityType Name="GroupUnitDb">
+          <Key>
+            <PropertyRef Name="GroupId" />
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="NovaAlert.Dal.GroupGroupUnit" FromRole="GroupUnit" ToRole="Group" />
+          <NavigationProperty Name="PhoneNumber" Relationship="NovaAlert.Dal.GroupUnitPhoneNumber" FromRole="GroupUnit" ToRole="PhoneNumber" />
+          <Property Name="ListOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PanelDb">
+          <Key>
+            <PropertyRef Name="PanelId" />
+          </Key>
+          <Property Name="PanelId" Type="Byte" Nullable="false" />
+          <Property Name="POId" Type="Byte" Nullable="false" />
+          <Property Name="CurrentMode" Type="Byte" />
+          <Property Name="CurrentGroupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PhoneNumberBase" Abstract="true">
+          <Key>
+            <PropertyRef Name="PhoneNumberId" />
+          </Key>
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsRestricted" Nullable="false" Type="Boolean" />          
+          </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DisplayDataDb">
+          <Key>
+            <PropertyRef Name="DisplayId" />           
+          </Key>
+          <Property Name="DisplayId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber_1" Type="Int32" />
+          <Property Name="PhoneNumber_2" Type="Int32" />
+        </EntityType>
+        
+        
+        <EntityType Name="PhoneNumber" BaseType="NovaAlert.Dal.PhoneNumberBase" >
+          <Property Name="NameAbbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TSLAreaCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TSLNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Groups" Relationship="NovaAlert.Dal.GroupUnitPhoneNumber" FromRole="PhoneNumber" ToRole="GroupUnit" />
+          <Property Name="DeletedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="HostPhoneNumber" BaseType="NovaAlert.Dal.PhoneNumberBase" >
+          <Property Name="Address" Type="Byte" Nullable="false" />
+        </EntityType>
+        <Association Name="ChannelHostPhoneNumber">
+          <End Type="NovaAlert.Dal.ChannelDb" Role="Channel" Multiplicity="*" />
+          <End Type="NovaAlert.Dal.HostPhoneNumber" Role="HostPhoneNumber" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="HostPhoneNumber">
+              <PropertyRef Name="PhoneNumberId" />
+            </Principal>
+            <Dependent Role="Channel">
+              <PropertyRef Name="PhoneNumberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupGroupUnit">
+          <End Type="NovaAlert.Dal.GroupDb" Role="Group" Multiplicity="1" />
+          <End Type="NovaAlert.Dal.GroupUnitDb" Role="GroupUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupUnit">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GroupUnitPhoneNumber">
+          <End Type="NovaAlert.Dal.GroupUnitDb" Multiplicity="*" Role="GroupUnit" />
+          <End Type="NovaAlert.Dal.PhoneNumber" Multiplicity="1" Role="PhoneNumber" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneNumber">
+              <PropertyRef Name="PhoneNumberId" />
+            </Principal>
+            <Dependent Role="GroupUnit">
+              <PropertyRef Name="PhoneNumberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PODb">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Address" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUnitTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Task" Type="Byte" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="Result" Type="Byte" Nullable="false" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="TaskType" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CallLogDb">
+          <Key>
+            <PropertyRef Name="CallLogId" />
+          </Key>
+          <Property Name="CallLogId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="POId" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="CallType" Type="Byte" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <NavigationProperty Name="Details" Relationship="NovaAlert.Dal.CallLogDbCallLogDetailDb" FromRole="CallLogDb" ToRole="CallLogDetailDb" />
+        </EntityType>
+        <EntityType Name="CallLogDetailDb">
+          <Key>
+            <PropertyRef Name="CallLogDetailId" />
+          </Key>
+          <Property Name="CallLogDetailId" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="CallLogId" Type="Guid" Nullable="false" />
+          <Property Name="ChannelId" Type="Int32" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="Record" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CallLog" Relationship="NovaAlert.Dal.CallLogDbCallLogDetailDb" FromRole="CallLogDetailDb" ToRole="CallLogDb" />
+          <Property Name="UnitName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="CallLogDbCallLogDetailDb">
+          <End Type="NovaAlert.Dal.CallLogDb" Role="CallLogDb" Multiplicity="1" />
+          <End Type="NovaAlert.Dal.CallLogDetailDb" Role="CallLogDetailDb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CallLogDb">
+              <PropertyRef Name="CallLogId" />
+            </Principal>
+            <Dependent Role="CallLogDetailDb">
+              <PropertyRef Name="CallLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ViewResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="TaskType" Type="Byte" />
+          <Property Name="PhoneNumberId" Type="Int32" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Task" Type="Byte" />
+          <Property Name="Level" Type="Byte" />
+          <Property Name="Result" Type="Byte" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="Id" Type="Int32" Nullable="false" />          
+        </EntityType>
+        <EntityType Name="AlarmLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlarmType" Type="Byte" Nullable="false" />
+          <Property Name="AlarmTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DbLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PanelId" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+
+        <EntityType Name="RadioTimeDb">
+          <Key>
+            <PropertyRef Name="DayType" />
+            <PropertyRef Name="ListOrder" />
+          </Key>
+          <Property Name="DayType" Type="Byte" Nullable="false" />
+          <Property Name="ListOrder" Type="Byte" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" />
+          <Property Name="EndTime" Type="DateTime" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+
+        <EntityType Name="TslStatusDb">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />          
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+
+        <EntityType Name="SubResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayId" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumberId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+          <Property Name="UnitName" Type="String" Unicode="true" Nullable="false" />
+          <Property Name="Task" Type="Byte" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="Result" Type="Byte" Nullable="false" />
+          <Property Name="TimeReceive" Type="DateTime" />
+          <Property Name="IntervalReceive" Type="Int64" />
+          <Property Name="TimeChange" Type="DateTime" />
+          <Property Name="IntervalChange" Type="Int64" />
+          <Property Name="TaskType" Type="Byte" Nullable="false" />
+        </EntityType>
+
+        <EntityContainer Name="NovaAlertModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlarmDbs" EntityType="NovaAlert.Dal.AlarmDb" />
+          <EntitySet Name="ChannelDbs" EntityType="NovaAlert.Dal.ChannelDb" />
+          <EntitySet Name="DayTypeConfigDbs" EntityType="NovaAlert.Dal.DayTypeConfigDb" />
+          <EntitySet Name="EnumDbs" EntityType="NovaAlert.Dal.EnumDb" />
+          <EntitySet Name="GroupDbs" EntityType="NovaAlert.Dal.GroupDb" />
+          <EntitySet Name="GroupUnitDbs" EntityType="NovaAlert.Dal.GroupUnitDb" />
+          <EntitySet Name="PanelDbs" EntityType="NovaAlert.Dal.PanelDb" />
+          <EntitySet Name="PhoneNumbers" EntityType="NovaAlert.Dal.PhoneNumberBase" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="ChannelHostPhoneNumber" Association="NovaAlert.Dal.ChannelHostPhoneNumber">
+            <End Role="Channel" EntitySet="ChannelDbs" />
+            <End Role="HostPhoneNumber" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="GroupGroupUnit" Association="NovaAlert.Dal.GroupGroupUnit">
+            <End Role="Group" EntitySet="GroupDbs" />
+            <End Role="GroupUnit" EntitySet="GroupUnitDbs" />
+          </AssociationSet>
+          <AssociationSet Name="GroupUnitPhoneNumber" Association="NovaAlert.Dal.GroupUnitPhoneNumber">
+            <End EntitySet="GroupUnitDbs" Role="GroupUnit" />
+            <End EntitySet="PhoneNumbers" Role="PhoneNumber" />
+          </AssociationSet>
+          <EntitySet Name="PODbs" EntityType="NovaAlert.Dal.PODb" />
+          <EntitySet Name="GroupUnitTasks" EntityType="NovaAlert.Dal.GroupUnitTask" />
+          <EntitySet Name="CallLogDbs" EntityType="NovaAlert.Dal.CallLogDb" />
+          <EntitySet Name="CallLogDetailDbs" EntityType="NovaAlert.Dal.CallLogDetailDb" />
+          <AssociationSet Name="CallLogDbCallLogDetailDb" Association="NovaAlert.Dal.CallLogDbCallLogDetailDb">
+            <End Role="CallLogDb" EntitySet="CallLogDbs" />
+            <End Role="CallLogDetailDb" EntitySet="CallLogDetailDbs" />
+          </AssociationSet>
+          <EntitySet Name="ViewResults" EntityType="NovaAlert.Dal.ViewResult" />
+          <EntitySet Name="AlarmLogs" EntityType="NovaAlert.Dal.AlarmLog" />
+          <EntitySet Name="DbLogs" EntityType="NovaAlert.Dal.DbLog" />
+          <EntitySet Name="DisplayDataDbs" EntityType="NovaAlert.Dal.DisplayDataDb" />
+          <EntitySet Name="RadioTimeDbs" EntityType="NovaAlert.Dal.RadioTimeDb" />
+          <EntitySet Name="TslStatusDbs" EntityType="NovaAlert.Dal.TslStatusDb" />
+          <EntitySet Name="SubResults" EntityType="NovaAlert.Dal.SubResult" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NovaAlertDalStoreContainer" CdmEntityContainer="NovaAlertModel">
+          <EntitySetMapping Name="AlarmDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.AlarmDb">
+              <MappingFragment StoreEntitySet="Alarm">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="AlarmId" ColumnName="AlarmId" />
+                <ScalarProperty Name="DayType" ColumnName="DayType" />
+                <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="TimesOfPlaying" ColumnName="TimesOfPlaying" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChannelDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.ChannelDb">
+              <MappingFragment StoreEntitySet="Channel">
+                <ScalarProperty Name="HotUnitId" ColumnName="HotUnitId" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="AutoRecording" ColumnName="AutoRecording" />
+                <ScalarProperty Name="AlertEnabled" ColumnName="AlertEnabled" />
+                <ScalarProperty Name="CCPKEnabled" ColumnName="CCPKEnabled"/>
+                <ScalarProperty Name="MultiDestEnabled" ColumnName="MultiDestEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DayTypeConfigDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.DayTypeConfigDb">
+              <MappingFragment StoreEntitySet="DayTypeConfig">
+                <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+                <ScalarProperty Name="DayType" ColumnName="DayType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnumDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.EnumDb">
+              <MappingFragment StoreEntitySet="Enum">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+                <ScalarProperty Name="Desc_VN" ColumnName="Desc_VN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.GroupDb">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUnitDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.GroupUnitDb">
+              <MappingFragment StoreEntitySet="GroupUnit">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PanelDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.PanelDb">
+              <MappingFragment StoreEntitySet="Panel">
+                <ScalarProperty Name="PanelId" ColumnName="PanelId" />
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="CurrentMode" ColumnName="CurrentMode" />
+                <ScalarProperty Name="CurrentGroupId" ColumnName="CurrentGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneNumbers">
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.PhoneNumberBase)">
+              <MappingFragment StoreEntitySet="PhoneNumber">                
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="IsRestricted" ColumnName="IsRestricted" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.HostPhoneNumber)">
+              <MappingFragment StoreEntitySet="PhoneNumber">
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <Condition ColumnName="Address" IsNull="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.PhoneNumber)">
+              <MappingFragment StoreEntitySet="PhoneNumber">
+                <ScalarProperty Name="TSLNumber" ColumnName="TSLNumber" />
+                <ScalarProperty Name="TSLAreaCode" ColumnName="TSLAreaCode" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NameAbbr" ColumnName="NameAbbr" />
+                <Condition ColumnName="Address" IsNull="true" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PODbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.PODb">
+              <MappingFragment StoreEntitySet="PO">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUnitTasks">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.GroupUnitTask">
+              <MappingFragment StoreEntitySet="GroupUnitTask">
+                <ScalarProperty Name="TaskType" ColumnName="TaskType"/>
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallLogDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.CallLogDb">
+              <MappingFragment StoreEntitySet="CallLog">                
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="CallType" ColumnName="CallType" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="POId" ColumnName="POId" />
+                <ScalarProperty Name="CallLogId" ColumnName="CallLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CallLogDetailDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.CallLogDetailDb">
+              <MappingFragment StoreEntitySet="CallLogDetail">
+                <ScalarProperty Name="Record" ColumnName="Record" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="CallLogId" ColumnName="CallLogId" />
+                <ScalarProperty Name="CallLogDetailId" ColumnName="CallLogDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewResults">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.ViewResult">
+              <MappingFragment StoreEntitySet="ViewResult">                
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />                
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlarmLogs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.AlarmLog">
+              <MappingFragment StoreEntitySet="AlarmLog">
+                <ScalarProperty Name="AlarmTime" ColumnName="AlarmTime" />
+                <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DbLogs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.DbLog">
+              <MappingFragment StoreEntitySet="DbLog">
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PanelId" ColumnName="PanelId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisplayDataDbs">
+            <EntityTypeMapping TypeName="NovaAlert.Dal.DisplayDataDb">
+              <MappingFragment StoreEntitySet="DisplayData">
+                <ScalarProperty Name="DisplayId" ColumnName="DisplayId"/>
+                <ScalarProperty Name="PhoneNumber_1" ColumnName="PhoneNumber_1"/>
+                <ScalarProperty Name="PhoneNumber_2" ColumnName="PhoneNumber_2"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RadioTimeDbs">
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.RadioTimeDb)">
+              <MappingFragment StoreEntitySet="RadioTime">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+                <ScalarProperty Name="DayType" ColumnName="DayType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
+          <EntitySetMapping Name="TslStatusDbs">
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.TslStatusDb)">
+              <MappingFragment StoreEntitySet="TslStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId"/>
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
+          <EntitySetMapping Name="SubResults">
+            <EntityTypeMapping TypeName="IsTypeOf(NovaAlert.Dal.SubResult)">
+              <MappingFragment StoreEntitySet="SubResult">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayId" ColumnName="DisplayId"/>
+                <ScalarProperty Name="ParentId" ColumnName="ParentId"/>
+                <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId"/>
+                <ScalarProperty Name="UnitName" ColumnName="UnitName"/>
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate"/>
+                <ScalarProperty Name="Task" ColumnName="Task"/>
+                <ScalarProperty Name="Level" ColumnName="Level"/>
+                <ScalarProperty Name="Result" ColumnName="Result"/>
+                <ScalarProperty Name="TimeReceive" ColumnName="TimeReceive"/>
+                <ScalarProperty Name="IntervalReceive" ColumnName="IntervalReceive"/>
+                <ScalarProperty Name="TimeChange" ColumnName="TimeChange"/>
+                <ScalarProperty Name="IntervalChange" ColumnName="IntervalChange"/>
+                <ScalarProperty Name="TaskType" ColumnName="TaskType"/>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

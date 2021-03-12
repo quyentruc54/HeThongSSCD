@@ -1,0 +1,122 @@
+﻿<Application x:Class="NovaAlert.Gui.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:Bll="clr-namespace:NovaAlert.Bll;assembly=NovaAlert.Bll"
+             xmlns:Entities="clr-namespace:NovaAlert.Entities;assembly=NovaAlert.Entities"
+             xmlns:ConfigView="clr-namespace:NovaAlert.Config.Views;assembly=NovaAlert.Config"
+             xmlns:ConfigViewModel="clr-namespace:NovaAlert.Config.ViewModels;assembly=NovaAlert.Config"
+             xmlns:Gui="clr-namespace:NovaAlert.Gui">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type Bll:AlertControlViewModel}">
+                <Gui:AlertControlView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:AlertOptionViewModel}">
+                <Gui:AlertOptionView2 />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:CCPK_AlertOptionViewModel}">
+                <Gui:CCPK_AlertOptionView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:MultiDestControlViewModel}">
+                <Gui:MultiDestControlView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:UnitPhoneListViewModel}">
+                <Gui:UnitPhoneListView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:ChannelListViewModel}">
+                <Gui:ChannelListView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:TSL_ChannelListViewModel}">
+                <Gui:ChannelListView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:HelpViewModel}">
+                <Gui:HelpView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:InfoViewModel}">
+                <ContentControl />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:MenuViewModel}">
+                <Gui:MenuView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:AlertMenuViewModel}">
+                <Gui:AlertMenuView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:LoginViewModel}">
+                <Gui:LoginView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:TSL_AlertControlViewModel}">
+                <Gui:TSL_AlertControlView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type Bll:TSL_AlertOptionViewModel}">
+                <Gui:TSL_AlertOptionView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ConfigViewModel:ConfigViewModel}">
+                <ConfigView:ConfigView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ConfigViewModel:DayTypeConfigViewModel}">
+                <ConfigView:DayTypeConfigView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ConfigViewModel:DateConfigViewModel}">
+                <ConfigView:DateConfigView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:ContactViewModel}">
+                <ConfigView:ContactListView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:DayTypeAlarmViewModel}">
+                <ConfigView:DayTypeAlarmView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:AlarmListViewModel}">
+                <ConfigView:AlarmListView />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type ConfigViewModel:RadioTimeListViewModel}">
+                <ConfigView:RadioTimeListView />
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type ConfigViewModel:GroupListViewModel}">
+                <ConfigView:GroupListView />
+            </DataTemplate>
+            <!--<DataTemplate DataType="{x:Type ConfigViewModel:UnitListViewModel}">
+                <ConfigView:UnitListView />
+            </DataTemplate>-->
+            <DataTemplate DataType="{x:Type ConfigViewModel:ChannelViewModel}">
+                <ConfigView:ChannelView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:CallLogSearchViewModel}">
+                <ConfigView:CallLogSearchView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:SearchLogViewModel}">
+                <ConfigView:SearchLogView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type Bll:PrivateAlarmViewModel}">
+                <Gui:PrivateAlarmView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:ClientSettingViewModel}">
+                <ConfigView:ClientSettingView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ConfigViewModel:DisplayDataViewModel}">
+                <ConfigView:DisplayDataView />
+            </DataTemplate>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

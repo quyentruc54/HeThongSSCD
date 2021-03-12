@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="NovaAlert.Gui.ChannelListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bll="clr-namespace:NovaAlert.Bll;assembly=NovaAlert.Bll"
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="119" d:DesignWidth="300">
+    <UserControl.Resources>
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter" TrueValue="Visible" FalseValue="Collapsed" />
+    </UserControl.Resources>
+
+    <Grid Background="DarkGreen">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />              
+        </Grid.ColumnDefinitions>
+
+        <ContentControl Content="{Binding PO}" ContentTemplate="{DynamicResource PODataTemplate}" HorizontalAlignment="Center" 
+                        Visibility="{Binding HasPO, Converter={StaticResource bvConverter}}"/>
+
+        <ItemsControl Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center"
+             ItemsSource="{Binding Items}"
+             ItemTemplate="{DynamicResource ChannelDataTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!--<StackPanel Orientation="Horizontal" DataContext="{Binding}" />-->
+                    <UniformGrid Rows="1" FlowDirection="LeftToRight" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+    
+</UserControl>

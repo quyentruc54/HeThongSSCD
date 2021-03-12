@@ -1,0 +1,44 @@
+﻿<dx:DXWindow x:Class="NovaAlert.Gui.wndAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             dx:ThemeManager.ThemeName="HybridApp"
+        Title="wndAbout" Height="300" Width="600" WindowStyle="None"
+             Background="LightBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <dx:DXTabControl>
+            <dx:DXTabControl.Items>
+                <dx:DXTabItem Header="Thông tin sản phẩm">
+                    <FlowDocumentScrollViewer VerticalScrollBarVisibility="Hidden">
+                        <FlowDocument>
+                            <Paragraph TextAlignment="Center" Foreground="White" FontWeight="Normal" LineHeight="25">
+                                <Run Text="Thiết bị hổ trợ tác chiến TCT-14" />
+                                <LineBreak />
+                                <Run Text="Phiên bản 3.0, cập nhật ngày 9/2020" />
+                                <LineBreak />
+                                <Run Text="Được phát triển bởi Phòng SHĐK - Viện CNTT" />
+                                <LineBreak />
+                                <Run Text="Số 02 Hồng Hà, Tân Bình, TP.Hồ Chí Minh" />
+                                <LineBreak />
+                                <Run Text="Số điện thoại:" />
+                                <LineBreak />
+                                <Run Text="Email:" />
+                            </Paragraph>
+                        </FlowDocument>
+                    </FlowDocumentScrollViewer>
+                </dx:DXTabItem>
+                
+                <dx:DXTabItem Header="Thông tin nhà sản xuất">
+                    
+                </dx:DXTabItem>
+            </dx:DXTabControl.Items>
+        </dx:DXTabControl>
+        <Button Content="Trở về" HorizontalAlignment="Right" Margin="3" Grid.Row="1" Width="70"
+                x:Name="btClose" Click="btClose_Click"/>
+    </Grid>
+</dx:DXWindow>

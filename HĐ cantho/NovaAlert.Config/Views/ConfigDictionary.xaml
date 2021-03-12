@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ConfigView="clr-namespace:NovaAlert.Config.Views"
+                    xmlns:Config="clr-namespace:NovaAlert.Config.ViewModels">
+    
+    <DataTemplate DataType="{x:Type Config:ConfigNavBarViewModel}">
+        <ConfigView:ConfigNavBarVew />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type Config:DayTypeButtonViewModel}">
+        <ConfigView:DayTypeView />
+    </DataTemplate>
+</ResourceDictionary>

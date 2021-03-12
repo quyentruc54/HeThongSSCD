@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="NovaAlert.Gui.AlertOptionView2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="89.057" d:DesignWidth="876.097">   
+    <UserControl.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource sidePanelBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>            
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox Header="KHAI BÁO NHIỆM VỤ">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="A" Command="{Binding A_Command}" />
+                <Button Grid.Row="0" Grid.Column="1" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="A2" Command="{Binding A2_Command}" />
+                <Button Grid.Row="0" Grid.Column="2" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="A3" Command="{Binding A3_Command}" />
+                <Button Grid.Row="0" Grid.Column="3" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="A4" Command="{Binding A4_Command}" />
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Header="KHAI BÁO CẤP BÁO ĐỘNG" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />                    
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="TC" Command="{Binding TC_Command}" />
+                <Button Grid.Row="0" Grid.Column="1" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="CA" Command="{Binding CA_Command}" />
+                <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="TB"  Command="{Binding TB_Command}" />
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Header="KHAI BÁO" Grid.Column="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />                    
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="NHỚ" Command="{Binding SaveCommand}" />
+                <Button Grid.Row="0" Grid.Column="1" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource HorizonControlButtonStyle}" Background="Blue" Foreground="White" Content="XÓA" Command="{Binding ClearCommand}" />
+            </Grid>
+        </GroupBox>
+    </Grid>    
+</UserControl>

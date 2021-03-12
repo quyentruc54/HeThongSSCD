@@ -1,0 +1,38 @@
+﻿<dx:DXWindow x:Class="NovaAlert.Common.Wpf.ModalDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"                
+             dx:ThemeManager.ThemeName="HybridApp" FontSize="16"
+             Title="ModalDialog" Height="300" Width="370" 
+             ShowInTaskbar="False" WindowStyle="ToolWindow" 
+             Loaded="DXWindow_Loaded">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <!--<ContentControl x:Name="_content" Grid.Row="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />-->
+        
+        <!--<Grid x:Name="_gridButtons" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btOK" Content="_OK" Grid.Column="1" Height="23" Click="btOK_Click" KeyboardNavigation.TabIndex="100" Margin="3" />
+            <Button x:Name="btCancel" Content="_Cancel" Grid.Column="3" Height="23" Click="btCancel_Click" KeyboardNavigation.TabIndex="101" Margin="3" />
+        </Grid>-->
+        <StackPanel x:Name="pnButtons" Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="btCancel" IsCancel="True" Width="70" Height="50" Click="btCancel_Click" KeyboardNavigation.TabIndex="101" Margin="3,3,15,3">
+                <Image Source="../Images/Cancel-32x32.png" />
+            </Button>
+            
+            <Button x:Name="btOK" IsDefault="True" Width="70" Height="50" Click="btOK_Click" KeyboardNavigation.TabIndex="100" Margin="15,3,3,3">
+                <Image Source="../Images/Ok-32x32.png"  />
+            </Button>            
+        </StackPanel>        
+    </Grid>
+</dx:DXWindow>

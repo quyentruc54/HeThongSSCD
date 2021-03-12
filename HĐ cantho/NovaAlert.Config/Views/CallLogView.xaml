@@ -1,0 +1,99 @@
+﻿<UserControl xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"  x:Class="NovaAlert.Config.Views.CallLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:local="clr-namespace:NovaAlert.Config.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="dxe:TextEdit">
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+        <Style TargetType="dxe:ComboBoxEdit">
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+        <Style TargetType="dxlc:GroupBox">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Blue" FontWeight="Bold" FontSize="14" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="3" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <dxlc:GroupBox Header="CUỘC GỌI">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Margin="3" VerticalAlignment="Center" Text="Loại / PO" />
+                <dxe:ComboBoxEdit Margin="3" Grid.Column="1" ItemsSource="{Binding CallTypeList}" DisplayMember="Value" ValueMember="Key" 
+                                  EditValue="{Binding SelectedCallLog.iCallType, Mode=OneWay}" AllowDefaultButton="False"/>
+                <dxe:TextEdit Margin="3" Grid.Column="2" Text="{Binding SelectedCallLog.POId}" Width="40" />
+
+                <TextBlock Grid.Row="1" Margin="3" VerticalAlignment="Center" Text="Bắt đầu" />
+                <dxe:TextEdit Margin="3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLog.StartTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+
+                <TextBlock Grid.Row="2" Margin="3" VerticalAlignment="Center" Text="Kết thúc" />
+                <dxe:TextEdit Margin="3" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLog.EndTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+            </Grid>
+        </dxlc:GroupBox>
+
+        <dxlc:GroupBox Header="CHI TIẾT" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Margin="3" VerticalAlignment="Center" Text="Kênh" />
+                <dxe:ComboBoxEdit Margin="3" Grid.Column="1" ItemsSource="{Binding ChannelList}" AllowNullInput="True"
+                              DisplayMember="Value" ValueMember="Key" EditValue="{Binding SelectedCallLogDetail.ChannelId}" AllowDefaultButton="False"/>
+
+                <TextBlock Grid.Row="1" Margin="3" VerticalAlignment="Center" Text="Đơn vị" />
+                <dxe:TextEdit Margin="3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLogDetail.UnitName}" />
+
+                <TextBlock Grid.Row="2" Margin="3" VerticalAlignment="Center" Text="Số ĐT" />
+                <dxe:TextEdit Margin="3" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLogDetail.PhoneNumber}" />
+
+                <TextBlock Grid.Row="3" Margin="3" VerticalAlignment="Center" Text="Bắt đầu" />
+                <dxe:TextEdit Margin="3" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLogDetail.StartTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+
+                <TextBlock Grid.Row="4" Margin="3" VerticalAlignment="Center" Text="Kết thúc" />
+                <dxe:TextEdit Margin="3" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLogDetail.EndTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+
+                <TextBlock Grid.Row="5" Margin="3" VerticalAlignment="Center" Text="Ghi âm" />
+                <dxe:TextEdit Margin="3" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SelectedCallLogDetail.Record}" />
+
+                <local:ClientMediaPlayerView Grid.Row="6" Grid.ColumnSpan="2" DataContext="{Binding Player}" />
+            </Grid>
+        </dxlc:GroupBox>
+    </Grid>
+</UserControl>

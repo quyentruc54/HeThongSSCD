@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="NovaAlert.Gui.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="562" d:DesignWidth="101">        
+    <!--<UserControl.Resources>
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter" TrueValue="Visible" FalseValue="Collapsed" />
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter2" TrueValue="Collapsed" FalseValue="Visible" />
+    </UserControl.Resources>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Button Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="KHAI BÁO" Command="{Binding MenuCommand}" />        
+        <Button Grid.Row="2" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="DANH BẠ" Command="{Binding ContactCommand}"/>
+
+        <!--<Button Grid.Row="2" Margin="15,10" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="DANH BẠ"
+                Visibility="{Binding ContactCommandVisible, Converter={StaticResource bvConverter}}" Command="{Binding ContactCommand}"/>-->
+
+        <ItemsControl Grid.Row="3" Grid.RowSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+             ItemsSource="{Binding App.Units.TempUnitCollectionView}"
+             ItemTemplate="{DynamicResource UnitDataTemplate}">            
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>    
+</UserControl>

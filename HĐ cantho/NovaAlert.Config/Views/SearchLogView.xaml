@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.SearchLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             dx:ThemeManager.ThemeName="HybridApp" FontSize="16"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="809.278">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Ngày:" />
+            <dxe:DateEdit Margin="3"  Text="{Binding SearchDate}" Mask="dd/MM/yyyy" MaskUseAsDisplayFormat="True" Width="130"/>
+
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Bàn điều khiển:" />
+            <dxe:ComboBoxEdit Margin="3" ItemsSource="{Binding PanelList}" DisplayMember="Value" ValueMember="Key"
+                              EditValue="{Binding SelectedPanelId}" Width="90" />
+            
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Nội dung tìm:" />
+            <dxe:TextEdit Margin="3" Text="{Binding SearchText}" Width="200" />
+            
+            <Button Margin="3" Command="{Binding SearchCommand}" Width="80" HorizontalAlignment="Left" Padding="0">
+                <StackPanel Margin="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Image Source="../Images/search1-32x32.png" Height="30" Margin="0"/>
+                    <TextBlock Margin="3,0" VerticalAlignment="Center" Text="Tìm" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <dxg:GridControl Grid.Row="1" ItemsSource="{Binding ItemsSource, ElementName=pageControl, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="grid" >
+            <dxg:GridControl.View>
+                <dxg:TableView IsDetailButtonVisibleBinding="{x:Null}" ShowGroupPanel="False" AllowEditing="False" AutoWidth="True">
+                    <dxg:TableView.LayoutCalculatorFactory>
+                        <dxg:GridTableViewLayoutCalculatorFactory/>
+                    </dxg:TableView.LayoutCalculatorFactory>
+                </dxg:TableView>
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="PanelId" Header="BĐK" Width="60" FixedWidth="True" EditSettings="{dxe:TextSettings}" VisibleIndex="0" />
+                <dxg:GridColumn FieldName="CreatedDate" Header="Ngày" Width="160" FixedWidth="True" EditSettings="{dxe:TextSettings DisplayFormat=dd/MM/yyyy HH:mm:ss}" VisibleIndex="1" SortOrder="Descending" SortIndex="0" />
+                <dxg:GridColumn FieldName="Info" Header="Thao tác" Width="250" EditSettings="{dxe:TextSettings DisplayFormat=dd/MM/yyyy HH:mm:ss}" VisibleIndex="2" />
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+        <!--<dx:WaitIndicator DeferedVisibility="{Binding IsBusy}" Grid.Row="1"/>-->
+        <wpfCommon:PaggingControl Grid.Row="2" PageContract="{Binding SearchContract}" Width="400" x:Name="pageControl" Margin="3"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NovaAlert.Bll.Controller.CallControllerBase&lt;T&gt;">
+    <Position X="3.25" Y="0.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAwAAAB0AAAaAA0AIBAAEGGAQAIAIEAEAAIAAAgCBgI=</HashCode>
+      <FileName>Controller\CallControllerBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.CallController">
+    <Position X="6" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAEAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\CallController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.InCallController">
+    <Position X="6" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAACAEAAAAAEAAAIAAAAAAAAAYAAAAAAAI=</HashCode>
+      <FileName>Controller\InCallController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.ControllerBase">
+    <Position X="0.5" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAwAAghUACAAAAgAIBAgAHEAgAAAAEAAAAAAAAAAAAI=</HashCode>
+      <FileName>Controller\ControllerBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.ComplexControllerBase">
+    <Position X="0.5" Y="6.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAUQCAAACBAAJACAGEDgAAAAEEAAAAEABAAAKs=</HashCode>
+      <FileName>Controller\ComplexControllerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.MainController">
+    <Position X="3.25" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAUAAAAAAgAIAAAAAAAAAAAAAAAAAAACBCAAAM=</HashCode>
+      <FileName>Controller\MainController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.MultiDestController">
+    <Position X="1.75" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAkAAAAUQAAAAAhAAEAAAAAAAAAAAAAAEAAACAAAAII=</HashCode>
+      <FileName>Controller\MultiDestController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.AlertController">
+    <Position X="4.5" Y="13.5" Width="2.25" />
+    <InheritanceLine Type="NovaAlert.Bll.Controller.MainController" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="11.973" />
+        <Point X="4.25" Y="13.125" />
+        <Point X="5.5" Y="13.125" />
+        <Point X="5.5" Y="13.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAEAEAAQAAAQECAAAAAAABAABAAEAAAAAAAACBCAAAE=</HashCode>
+      <FileName>Controller\AlertController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.AlertMember">
+    <Position X="6" Y="7.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQEQEAAIAAUAOAIAAGAEAAAAgAABAAAAI=</HashCode>
+      <FileName>Controller\AlertMember.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Bll.Controller.ConferenceMember">
+    <Position X="8.75" Y="6" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAUAAACAQUAAAAgUQGAIAAAAAACAAIAAAgCAAA=</HashCode>
+      <FileName>Controller\ConferenceMember.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="NovaAlert.Bll.Controller.IConferenceMember">
+    <Position X="8.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAIAAgABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\ICallController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="NovaAlert.Bll.Controller.eCallStatus">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAQAAAAAAAAAAAAAQBAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\eCallStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Bll.Controller.eAlertMemberStatus">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAUAAEAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Controller\AlertMember.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Bll.Controller.eConferenceMemberStatus">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQAAAAAA=</HashCode>
+      <FileName>Controller\ConferenceMember.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="NovaAlert.Gui.TSL_AlertControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="519" d:DesignWidth="123">    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Margin="15,5" Template="{DynamicResource CircleButtonTemplate}" Content="CHUẨN BỊ NL" Command="{Binding PrepareCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Controller.IsPreparing}" Value="true">
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Row="1" Margin="15,5" Template="{DynamicResource CircleButtonTemplate}" Content="NHẬN KQ" Command="{Binding ReceiveResultCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource ControlButtonStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Controller.IsReceiving}" Value="true">
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Row="2" Margin="15,5" Template="{DynamicResource CircleButtonTemplate}" Style="{DynamicResource ControlButtonStyle}" Content="KẾT QUẢ" Command="{Binding ShowResultCommand}"/>        
+    </Grid>
+</UserControl>

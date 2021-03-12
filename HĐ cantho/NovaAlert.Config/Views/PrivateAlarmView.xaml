@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.PrivateAlarmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700" FontSize="16">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="BĐ PK"  Command="{Binding BDPKCommand}"/>
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="BĐ CĐ" Command="{Binding BDCDCommand}" />
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="Loa chính" Command="{Binding MainSoundCommand}" />
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="Loa phụ" Command="{Binding SecondSoundCommand}" />
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="Mic" Command="{Binding MicCommand}" />
+            <Button  Grid.Column="1" Grid.Row="2"  Template="{DynamicResource CircleButtonTemplate}"  Style="{DynamicResource ControlButtonStyle}"  Content="Mở tệp" Command="{Binding FileOpenCommand}" />
+        </StackPanel>
+        
+        <Button x:Name="dayButton" Grid.Column="1" Grid.Row="2"  Template="{DynamicResource ConfigTextBlockTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="{Binding Name}" DataContext="{Binding DTView.Day}" />
+        <Button x:Name="typeButton" Grid.Column="1" Grid.Row="3" Template="{DynamicResource ConfigTextBlockTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="{Binding Name}" DataContext="{Binding DTView.Type}" />
+        <ContentControl Grid.Column="1" Grid.Row="4" Content="{Binding DTView.AlarmVM}" />
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button  Grid.Column="1" Grid.Row="2" Width="100" Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="Ngày trước" Command="{Binding PrevDayCommand}" />
+            <Button  Grid.Column="1" Grid.Row="3" Width="100" Template="{DynamicResource ConfigButtonTemplate}" Style="{StaticResource ConfigStatusButtonStyle}" Content="Ngày kế" Command="{Binding NextDayCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

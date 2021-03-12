@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.DateConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             dx:ThemeManager.ThemeName="HybridApp"
+             mc:Ignorable="d" FontSize="16"
+             d:DesignHeight="400" d:DesignWidth="500">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Text="Điều chỉnh ngày-giờ hệ thống" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="{DynamicResource redBrush}" FontWeight="Bold" TextDecorations="Underline"/>
+
+        <dxe:TextEdit Grid.Column="1" x:Name="editor"  Grid.Row="2" EditValue="{Binding SystemTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayFormatString="dddd dd/MM/yyyy HH:mm"
+                    VerticalAlignment="Top" Height="40"
+                    Width="250"
+                    Mask="dd/MM/yyyy HH:mm" MaskType="DateTimeAdvancingCaret"
+                    Margin="50,25,50,3" 
+                    >
+            <!--<dxe:DateEdit.StyleSettings>
+                <dxe:DateEditPickerStyleSettings />
+            </dxe:DateEdit.StyleSettings>-->
+        </dxe:TextEdit>
+        <Border Grid.Row="3" Grid.Column="1" CornerRadius="3" BorderThickness="2" HorizontalAlignment="Center" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" >
+        <dxe:DateTimePicker  Mask="dd/MM/yyyy HH:mm" HorizontalAlignment="Center" DateTime="{Binding SystemTime, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" BorderBrush="{DynamicResource darkGreenBrush}" BorderThickness="2" OverridesDefaultStyle="True"    />
+        </Border>
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+            <Button Height="50" Width="50" Margin="3" Command="{Binding SaveCommand}">
+                <StackPanel>
+                    <Image Source="../Images/disk_blue.png"/>
+                </StackPanel>
+                <Button.ToolTip>
+                    <ToolTip Content="Lưu" FontSize="14"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Margin="3" Height="50" Width="50" Command="{Binding CancelCommand}" FontSize="16" FontWeight="Bold">
+                <StackPanel>
+                    <Image Source="../Images/undo.png"/>
+                </StackPanel>
+                <Button.ToolTip>
+                    <ToolTip Content="Bỏ qua không lưu" FontSize="14"/>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

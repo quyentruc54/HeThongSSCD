@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="NovaAlert.Server.Views.ClientActionListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="537">
+    <UserControl.Resources>
+        <wpfCommon:EnumDescriptionConverter x:Key="edConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <dxg:GridControl SelectionMode="Row" ItemsSource="{Binding}">
+            <dxg:GridControl.View>
+                <dxg:TableView ShowTotalSummary="False" ShowGroupPanel="False" AllowEditing="False" AutoWidth="True"
+                               FocusedRow="{Binding SelectedAction, Mode=TwoWay}"/>
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Client.Type" Header="Loại" Width="100" FixedWidth="True" EditSettings="{dxe:TextSettings DisplayTextConverter={StaticResource edConverter}}" />
+                <dxg:GridColumn FieldName="Client.Id" Header="Id" Width="30" FixedWidth="True" />
+                <dxg:GridColumn FieldName="Action" Header="Thao tác" Width="100" FixedWidth="True" EditSettings="{dxe:TextSettings DisplayTextConverter={StaticResource edConverter}}" />
+                <dxg:GridColumn FieldName="Time" Header="Ngày giờ" Width="120" FixedWidth="True"
+                                EditSettings="{dxe:TextSettings DisplayFormat=dd/MM/yy HH:mm:ss}"/>
+                <dxg:GridColumn FieldName="ResourceType" Header="Loại tài nguyên" EditSettings="{dxe:TextSettings DisplayTextConverter={StaticResource edConverter}}" />
+                <dxg:GridColumn FieldName="ResourceId" Header="Id của tài nguyên" />
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+    </Grid>
+</UserControl>

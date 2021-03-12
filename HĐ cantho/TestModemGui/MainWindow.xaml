@@ -1,0 +1,34 @@
+﻿<Window x:Class="TestModemGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="617">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Cổng COM" />
+            <ComboBox Margin="3" ItemsSource="{Binding Comports}" Text="{Binding SelectedPort}" Width="70"/>
+            <Button Margin="3" Content="Open" Command="{Binding OpenCommand}" />
+            <Button Margin="3" Content="Close" Command="{Binding CloseModemCommand}" />
+            <Button Margin="3" Content="Reset" Command="{Binding ResetCommand}" />
+            <TextBox Margin="3" VerticalAlignment="Center" Width="70" Text="{Binding NumberToCall}" />
+            <Button Margin="3" Content="Call" Command="{Binding DialCommand}" />
+            <Button Margin="3" Content="+++" Command="{Binding SwithModeCommand}" />
+            <!--<Button Margin="3" Content="Echo-Off" Command="{Binding EchoOffCommand}" />-->
+            <Button Margin="3" Content="Hang up" Command="{Binding HangUpCommand}" />
+            <Button Margin="3" Content="Prepare" Command="{Binding PrepareCommand}" />
+            <Button Margin="3" Content="Get Results" Command="{Binding GetResultCommand}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Dữ liệu" />
+            <TextBox Margin="3" VerticalAlignment="Center" Width="300" Text="{Binding Data}" />
+            <Button Margin="3" Content="Gởi" Command="{Binding SendDataCommand}" />
+            <Button Margin="3" Content="Gởi KQ" Command="{Binding SendResultCommand}" />
+        </StackPanel>
+        <TextBox Margin="3" Grid.Row="2" Text="{Binding LogText, Mode=OneWay}" VerticalScrollBarVisibility="Visible"/>
+    </Grid>
+</Window>

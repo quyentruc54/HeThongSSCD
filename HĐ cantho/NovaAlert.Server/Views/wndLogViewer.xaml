@@ -1,0 +1,39 @@
+﻿<Window x:Class="NovaAlert.Server.Views.wndLogViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NovaAlert.Server.Views"        
+        mc:Ignorable="d"
+        Title="Nhật ký giao tiếp chuyển mạch" Height="300" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <CheckBox VerticalAlignment="Center" x:Name="chkLogSendData" IsChecked="True" Content="Bắt dữ liệu gởi" Margin="3"
+                      IsEnabledChanged="OnOptionChanged"/>
+        </StackPanel>
+        <local:LiveLogViewCtrl x:Name="sendLogView" Grid.Row="1" BorderThickness="1" BorderBrush="Black" />
+
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <CheckBox VerticalAlignment="Center" x:Name="chkRcvData" IsChecked="True" Content="Bắt dữ liệu nhận" Margin="3"
+                      IsEnabledChanged="OnOptionChanged"/>
+        </StackPanel>
+        <local:LiveLogViewCtrl x:Name="rcvLogView" Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" />
+
+        <!--<StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Data" />
+            <TextBox Margin="3" Width="600" x:Name="txData" />
+            <Button Margin="3" Content="Send" x:Name="btSend" Click="btSend_Click" />
+            <Button Margin="3" Content="Receive" x:Name="btRcv" Click="btRcv_Click" />
+        </StackPanel>-->
+    </Grid>
+</Window>

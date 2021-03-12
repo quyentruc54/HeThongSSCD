@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NovaAlert.Entities.BaseEventArgs" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.BindableEntity" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BindableEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.Contact" Collapsed="true">
+    <Position X="5.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAICAAEAAgAQEAAAAAIACAAAAAAAAAAg=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ContactInGroup" Collapsed="true">
+    <Position X="2.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAACAAQAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ContactGroup" Collapsed="true">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.BaseEntity" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.Phone" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAEAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.UnitPhone" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAwAQAAAAAAAACAECAAAAAAAg=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.HostPhone" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAQAAAAAAEAACCAAACAAAgAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.Alarm" Collapsed="true">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAACAAAEAAAQgAAAAAAAAAAAAAABAAQA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.DayTypeConfig" Collapsed="true">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.Channel" Collapsed="true">
+    <Position X="4" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAEAAAUAACAAAQCAAAgAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.Enum" Collapsed="true">
+    <Position X="5.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAQCgQAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.CallLog" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAACAAIAAoAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.CallLogDetail" Collapsed="true">
+    <Position X="2.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAQAACIAAgAIAAAAQEAABABAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.SearchCallLogResult" Collapsed="true">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAIAAAAAAAgAAAAAEAAAAAAAAAAAI=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.Panel" Collapsed="true">
+    <Position X="0.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAQAAAgAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ChannelEventArgs" Collapsed="true">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\ChannelEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ChannelStatusChangedEventArgs" Collapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAEAAAAAIAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\ChannelStatusChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.POStatusChangedEventArgs" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\POStatusChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ResourceChangedEventArgs" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\ResourceChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.SystemDateTimeChangedEventArgs" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\SystemDateTimeChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.OtherDevice" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAEAAAAAAACACAggAAAAAAKAAAAoAIQAAQ=</HashCode>
+      <FileName>OtherDevice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.PO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NovaAlert.Entities.SearchCallLogCriteria" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAQAAAAAAIAIAAAAAAAAgAIAIgIAAAAQAAEAAAAA=</HashCode>
+      <FileName>SearchCallLogCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ConferenceConnection" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAwBAAEAAggAAQAAAAAACAAAAAAAAACA=</HashCode>
+      <FileName>SwitchConnection\ConferenceConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.SwitchConnection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAABAgAAAAAAAQAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>SwitchConnection\SwitchConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NovaAlert.Entities.SwitchConnectionEnd" Collapsed="true">
+    <Position X="5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgBAAEAAAAAAAAAAAAACAAIAAAAEAAA=</HashCode>
+      <FileName>SwitchConnection\SwitchConnectionEnd.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.Task" Collapsed="true">
+    <Position X="0.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAQAAAAAAAABAgAAAAAAAAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ViewModel.HostPhoneViewModel" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\HostPhoneViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ViewModel.PhoneViewModel" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAFAEIBAAAQAAAEAqUATGAAAQAAAAIAAQMAAEAAQ=</HashCode>
+      <FileName>ViewModel\PhoneViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NovaAlert.Entities.ViewModel.POViewModel" Collapsed="true">
+    <Position X="4" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAEAEAACAAQAAAAAAAASAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\POViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ViewModel.TaskViewModel" Collapsed="true">
+    <Position X="2.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAgACCQAAAAAAAABAAAAAgAAAAA=</HashCode>
+      <FileName>ViewModel\TaskViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NovaAlert.Entities.ViewModel.UnitPhoneViewModel" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAAAIBAAAAAAAAAAAAQAAggAAAACAECQCAAAQBA=</HashCode>
+      <FileName>ViewModel\UnitPhoneViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NovaAlert.Entities.IClientApp" Collapsed="true">
+    <Position X="0.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAQAhAABAAAAIAhAQAAAAAAAAAQgIACAAEAAAAAAg=</HashCode>
+      <FileName>IClientApp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.IResource" Collapsed="true">
+    <Position X="0.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IResource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.INovaAlertConfigService" Collapsed="true">
+    <Position X="2.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAAiACCAwAAkCSAIAgEQCAAAAAQBAEAEACAAgJAABA=</HashCode>
+      <FileName>ServiceContract\INovaAlertConfigService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.INovaAlertService" Collapsed="true">
+    <Position X="4" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iCAACCrACAAQgAIAQUoAKAgRAIISwAgCQECHKBKAAAA=</HashCode>
+      <FileName>ServiceContract\INovaAlertService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.INovaAlertServiceCallback" Collapsed="true">
+    <Position X="5.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAgAUAAAAAAAAAAAgAAEAAAAAAAAAGIIAAAAAAAI=</HashCode>
+      <FileName>ServiceContract\INovaAlertServiceCallback.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.ISwitchAddress" Collapsed="true">
+    <Position X="2.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>SwitchConnection\ISwitchAddress.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.ISwitchConnection" Collapsed="true">
+    <Position X="4" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SwitchConnection\ISwitchConnection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NovaAlert.Entities.ISwitchConnectionEnd" Collapsed="true">
+    <Position X="5.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAAAAAACAAIAAAAAAAA=</HashCode>
+      <FileName>SwitchConnection\ISwitchConnectionEnd.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="NovaAlert.Entities.eCallType" Collapsed="true">
+    <Position X="2.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAACAAAAAAAACAAAAAAAAAAAAACAAAAAI=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eAlertSoundStatus" Collapsed="true">
+    <Position X="0.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAMAAAA=</HashCode>
+      <FileName>Enums\eAlertSoundStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eClientType" Collapsed="true">
+    <Position X="4" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\eClientType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.ePhoneStatus" Collapsed="true">
+    <Position X="0.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQEAAAAAAAAAAAAAgIEAAAAAAAAADAAAICAAI=</HashCode>
+      <FileName>Enums\ePhoneStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eLineStatus" Collapsed="true">
+    <Position X="5.75" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Enums\ePhoneStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.ePOStatus" Collapsed="true">
+    <Position X="2.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAA=</HashCode>
+      <FileName>Enums\ePOStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eResourceType" Collapsed="true">
+    <Position X="4" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAgAQCEAAAAAAAAAAAAgAgAAAAIAAAQIAAAAAA=</HashCode>
+      <FileName>Enums\eResourceType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eTask" Collapsed="true">
+    <Position X="5.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAIIEAAAA=</HashCode>
+      <FileName>Enums\eTask.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eTaskLevel" Collapsed="true">
+    <Position X="0.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEQAAA=</HashCode>
+      <FileName>Enums\eTask.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eTaskResult" Collapsed="true">
+    <Position X="2.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAFAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Enums\eTask.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eVolumn" Collapsed="true">
+    <Position X="4" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAIAAAAgAAEAwCAAAQAAQBAAA=</HashCode>
+      <FileName>Enums\eVolumn.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NovaAlert.Entities.eWorkingMode" Collapsed="true">
+    <Position X="5.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAABAIAAAAAAAAAABAAAAAAAI=</HashCode>
+      <FileName>Enums\eWorkingMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

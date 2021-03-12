@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="NovaAlert.Config.Views.DayTypeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Config="clr-namespace:NovaAlert.Config.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type={x:Type Config:DayTypeButtonViewModel}, IsDesignTimeCreatable=True}" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ItemsControl ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+             ItemsSource="{Binding ButtonList}"
+             ItemTemplate="{DynamicResource DayTypeDataTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" DataContext="{Binding}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <!--<Button Template="{DynamicResource ConfigButtonTemplate}" Style="{DynamicResource ConfigStatusButtonStyle}"  Content="Không khai báo"/>
+        <Button Template="{DynamicResource ConfigButtonTemplate}" Style="{DynamicResource ConfigStatusButtonStyle}" Grid.Row="1" Content="Ngày làm việc" />
+        <Button Template="{DynamicResource ConfigButtonTemplate}" Style="{DynamicResource ConfigStatusButtonStyle}" Grid.Row="2" Content="Ngày kế ngày nghỉ" />
+        <Button Template="{DynamicResource ConfigButtonTemplate}" Style="{DynamicResource ConfigStatusButtonStyle}" Grid.Row="3" Content="Ngày nghỉ có điểm danh" />
+        <Button Template="{DynamicResource ConfigButtonTemplate}" Style="{DynamicResource ConfigStatusButtonStyle}" Grid.Row="4" Content="Ngày nghỉ" />-->
+    </Grid>
+</UserControl>

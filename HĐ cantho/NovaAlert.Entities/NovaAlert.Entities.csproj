@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C4413F39-CFA1-42E5-B55C-5C7888AE054F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NovaAlert.Entities</RootNamespace>
+    <AssemblyName>NovaAlert.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\eAlertMode.cs" />
+    <Compile Include="Enums\eAlertSoundStatus.cs" />
+    <Compile Include="Enums\eClientType.cs" />
+    <Compile Include="Enums\ePhoneNumberTypeCde.cs" />
+    <Compile Include="Enums\eResourceType.cs" />
+    <Compile Include="Enums\eTslStatus.cs" />
+    <Compile Include="Enums\eWorkingMode.cs" />
+    <Compile Include="Enums\eGlobalParameter.cs" />
+    <Compile Include="EventArgs\EntityChangedEventArgs.cs" />
+    <Compile Include="EventArgs\SystemDateTimeChangedEventArgs.cs" />
+    <Compile Include="EventArgs\TaskChangedEventArgs.cs" />
+    <Compile Include="HelpItem.cs" />
+    <Compile Include="IClientApp.cs" />
+    <Compile Include="IMediaPlayer.cs" />
+    <Compile Include="ResultData.cs" />
+    <Compile Include="SearchCallLogCriteria.cs" />
+    <Compile Include="ServiceContract\INovaAlertConfigService.cs" />
+    <Compile Include="ServiceContract\INovaAlertService.cs" />
+    <Compile Include="ServiceContract\INovaAlertServiceCallback.cs" />
+    <Compile Include="SoundFile.cs" />
+    <Compile Include="BaseEventArgs.cs" />
+    <Compile Include="BindableEntity.cs" />
+    <Compile Include="EventArgs\ChannelEventArgs.cs" />
+    <Compile Include="EventArgs\ChannelStatusChangedEventArgs.cs" />
+    <Compile Include="IResource.cs" />
+    <Compile Include="SwitchConnection\ConferenceConnection.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="Enums\eVolumn.cs" />
+    <Compile Include="SwitchConnection\ISwitchConnection.cs" />
+    <Compile Include="SwitchConnection\ISwitchConnectionEnd.cs" />
+    <Compile Include="EventArgs\POStatusChangedEventArgs.cs" />
+    <Compile Include="EventArgs\ResourceChangedEventArgs.cs" />
+    <Compile Include="OtherDevice.cs" />
+    <Compile Include="SwitchConnection\SwitchConnection.cs" />
+    <Compile Include="Enums\ePhoneStatus.cs" />
+    <Compile Include="Enums\ePOStatus.cs" />
+    <Compile Include="Enums\eTask.cs" />
+    <Compile Include="SwitchConnection\ISwitchAddress.cs" />
+    <Compile Include="PO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwitchConnection\SwitchConnectionEnd.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="ViewModel\HostPhoneViewModel.cs" />
+    <Compile Include="ViewModel\ModemViewModel.cs" />
+    <Compile Include="ViewModel\PhoneViewModel.cs" />
+    <Compile Include="ViewModel\POViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
+    <Compile Include="ViewModel\TslStatusViewModel.cs" />
+    <Compile Include="ViewModel\UnitPhoneViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NovarAlert.Common\NovaAlert.Common.csproj">
+      <Project>{9520c0b1-e82c-4678-abe7-38c2cd3f66da}</Project>
+      <Name>NovaAlert.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NovaAlertEntities.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

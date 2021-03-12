@@ -1,0 +1,42 @@
+﻿<Window x:Class="NovaAlert.Config.Views.ResultDataListView3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:local="clr-namespace:NovaAlert.Config.Views" Topmost="True"
+             dx:ThemeManager.ThemeName="TouchlineDark"
+             FontFamily="Times New Roman" FontSize="14"
+             WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True"
+        Title="ResultDataListView3" Height="300" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>                
+                
+                <Button FontWeight="Bold" FontSize="22"  Content="{Binding Title}" />
+                <Button x:Name="btClose" Grid.Column="2" Background="Transparent" Click="btClose_Click">
+                    <Image Source="../images/close-16x16.png" />
+                </Button>
+            </Grid>
+        </Border>
+        <local:AlertResultListViewCtrl Grid.Row="1" DataContext="{Binding LeftResults}" />
+        <local:AlertResultListViewCtrl Grid.Row="1" Grid.Column="1" DataContext="{Binding RightResults}"/>
+    </Grid>
+</Window>

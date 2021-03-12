@@ -1,0 +1,86 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfCommon="clr-namespace:NovaAlert.Common.Wpf;assembly=NovaAlert.Common"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             x:Class="NovaAlert.Config.Views.ContactListView" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             dx:ThemeManager.ThemeName="HybridApp" FontSize="16" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="801">
+    <UserControl.Resources>
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter" TrueValue="Collapsed" FalseValue="Visible" />
+        <wpfCommon:BoolToVisibilityConverter x:Key="bvConverter2" TrueValue="Visible" FalseValue="Collapsed" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="3" VerticalAlignment="Center" Text="Tìm kiếm" />       
+
+        <dxe:ButtonEdit Grid.Column="1" Grid.ColumnSpan="1" Margin="3" Text="{Binding Conditions,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+            AllowNullInput="True" NullText="" ShowNullText="True" NullValueButtonPlacement="EditBox" AllowDefaultButton="False"/>
+
+        <!--<StackPanel Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" VerticalAlignment="Center" Orientation="Horizontal"
+                    Visibility="{Binding ShowMakeCall, Converter={StaticResource bvConverter2}}">
+            <TextBlock Margin="3" VerticalAlignment="Center" Text="Kênh điện thoại:" />
+            <dxe:ComboBoxEdit Margin="3" VerticalAlignment="Center" Width="100" ItemsSource="{Binding Channels}" DisplayMember="Name" 
+                              SelectedItem="{Binding SelectedChannel}" />
+            <Button Margin="3" VerticalAlignment="Center" Command="{Binding MakeCallCommand}">
+                <Image Source="../Images/phone-32x32.png" />
+            </Button>
+        </StackPanel>-->
+
+        <dxg:GridControl x:Name="grid" ItemsSource="{Binding Path=ItemsView}" AutoPopulateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" >
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="view" ShowGroupPanel="False" AutoWidth="True" AllowEditing="True" FocusedRow="{Binding ItemSelected, Mode=TwoWay}"/>
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Selected" Header="" Width="30" AllowEditing="True" EditSettings="{dxe:CheckSettings}" VisibleIndex="0" 
+                                Visible="{Binding AllowMultiSelect}"/>
+                
+                <dxg:GridColumn FieldName="NameAbbr" Header="Tên hiển thị" Width="60" AllowEditing="False" EditSettings="{dxe:TextSettings}" VisibleIndex="1" />
+                <dxg:GridColumn FieldName="UnitName" Header="Tên đơn vị" Width="130" AllowEditing="False" VisibleIndex="2" />
+                <dxg:GridColumn FieldName="FullNumber" Header="Số ĐT" Width="120" AllowEditing="False"  EditSettings="{dxe:TextSettings}" VisibleIndex="3" FixedWidth="True" />
+                <dxg:GridColumn FieldName="FullTSLNumber" Header="Số ĐT TSL" Width="120" AllowEditing="False" EditSettings="{dxe:TextSettings}" VisibleIndex="4" 
+                                Visible="{Binding ShowTSL}" FixedWidth="True"/>
+                <dxg:GridColumn FieldName="Password" Header="Mã báo trả" Width="100" AllowEditing="False" EditSettings="{dxe:TextSettings}" VisibleIndex="5" FixedWidth="True"/>
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" FlowDirection="RightToLeft"
+                    Visibility="{Binding IsShowModal, Converter={StaticResource bvConverter}}">
+            <Button Margin="3"  Height="50" Width="50" Command="{Binding EditContactCommand}">
+                <Image Source="../Images/edit-32x32.png"/>
+                <Button.ToolTip>
+                    <ToolTip Content="Thay đổi" FontSize="14"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Margin="3" Height="50" Width="50" Command="{Binding AddContactCommand}" 
+                    Visibility="{Binding IsShowModal, Converter={StaticResource bvConverter}}">
+                <Image Source="../Images/add-32x32.png"/>
+                <Button.ToolTip>
+                    <ToolTip Content="Thêm mới" FontSize="14"/>
+                </Button.ToolTip>
+            </Button>
+            <Button Margin="3" Height="50" Width="50" Command="{Binding DeleteContactCommand}" 
+                    Visibility="{Binding IsShowModal, Converter={StaticResource bvConverter}}">
+                <Image Source="../Images/delete2.png"/>
+                <Button.ToolTip>
+                    <ToolTip Content="Xóa" FontSize="14"/>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
